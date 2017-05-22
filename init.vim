@@ -36,43 +36,6 @@ call plug#end()
 
 
 let mapleader = "\<Space>"
-"Vertical split window and focus it
-nnoremap <C-c> :vs<Enter><C-w><Right>
-"Close all buffers
-nnoremap <C-n> :%bd<Enter>
-nnoremap !<C-n> :%bd!<Enter>
-"Close buffer
-nnoremap <expr> <C-d> ( winnr("$") == 2 ? ':bp<bar>sp<bar>bn<bar>bd<Enter>' : ':bd<Enter>')
-nnoremap <expr> !<C-d> ( winnr("$") == 2 ? ':bp!<bar>sp!<bar>bn!<bar>bd!<Enter>' : ':bd!<Enter>')
-"Quit file
-nnoremap <C-q> :q<Enter>
-nnoremap !<C-q> :q!<Enter>
-"Open terminal tab and focus it
-nnoremap <C-t> :vs<Enter><C-w><Right>:term<Enter>
-"Switch buffers
-nnoremap !<Tab> :buffer!<Space>
-nnoremap <Leader><Tab> :buffer<Space>
-"Save file
-nnoremap <C-s> :w<Enter>
-inoremap <C-s> <Esc>:w<Enter>
-"Searching project
-nnoremap <C-p> :Files<Enter>
-nnoremap <C-f> :Find<Space>
-"Remove highlighting
-nnoremap <C-h> :noh<Enter>
-"Open all buffers
-nnoremap <C-b> :bufdo!vs<Enter>:q<Enter>:source ~/.config/nvim/init. vim<Enter>
-"Have all buffers do something
-nnoremap b<C-f> :bufdo!<Space>
-"Reload vim config
-nnoremap <C-\> :source ~/.config/nvim/init.vim<Enter>
-"Easy align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-"In Visual Block Mode press ctr+a after selecting lines to align on cursors
-"column
-xnoremap <C-a> mmI=<Esc>mnv`mg_:EasyAlign<Enter>=`n<C-v>`md:delm<Space>m<Enter>:delm<Space>n<Enter>
-
 
 "Remap i to h because we are using i as up now
 noremap h i
@@ -108,6 +71,42 @@ noremap <S-l> w
 noremap <Leader>j ^
 noremap <Leader>l g_
 
+"Vertical split window and focus it
+nnoremap <C-c> :vs<Enter><C-w><Right>
+"Close all buffers
+nnoremap <C-n> :%bd<Enter>
+nnoremap !<C-n> :%bd!<Enter>
+"Close buffer
+nnoremap <expr> <C-d> ( winnr("$") == 2 ? ':bp<bar>sp<bar>bn<bar>bd<Enter>' : ':bd<Enter>')
+nnoremap <expr> !<C-d> ( winnr("$") == 2 ? ':bp!<bar>sp!<bar>bn!<bar>bd!<Enter>' : ':bd!<Enter>')
+"Quit file
+nnoremap <C-q> :q<Enter>
+nnoremap !<C-q> :q!<Enter>
+"Open terminal tab and focus it
+nnoremap <C-t> :vs<Enter><C-w><Right>:term<Enter>
+"Switch buffers
+nnoremap !<Tab> :buffer!<Space>
+nnoremap <Tab> :buffer<Space>
+"Save file
+nnoremap <C-s> :w<Enter>
+inoremap <C-s> <Esc>:w<Enter>
+"Searching project
+nnoremap <C-p> :Files<Enter>
+nnoremap <C-f> :Find<Space>
+"Remove highlighting
+nnoremap <C-h> :noh<Enter>
+"Open all buffers
+nnoremap <C-b> :bufdo!vs<Enter>:q<Enter>:source ~/.config/nvim/init. vim<Enter>
+"Have all buffers do something
+nnoremap b<C-f> :bufdo!<Space>
+"Reload vim config
+nnoremap <C-\> :source ~/.config/nvim/init.vim<Enter>
+"Easy align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+"In Visual Block Mode press ctr+a after selecting lines to align on cursors
+"column
+xnoremap <C-a> mmI=<Esc>mnv`mg_:EasyAlign<Enter>=`n<C-v>`md:delm<Space>m<Enter>:delm<Space>n<Enter>
 
 "inoremap <C-i> <C-o>k
 "inoremap <C-j> <C-o>h
