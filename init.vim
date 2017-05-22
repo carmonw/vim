@@ -104,8 +104,7 @@ nnoremap <C-\> :source ~/.config/nvim/init.vim<Enter>
 "Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-"In Visual Block Mode press ctr+a after selecting lines to align on cursors
-"column
+"In Visual Block Mode press ctr+a after selecting lines to align on cursors column
 xnoremap <C-a> mmI=<Esc>mnv`mg_:EasyAlign<Enter>=`n<C-v>`md:delm<Space>m<Enter>:delm<Space>n<Enter>
 
 "inoremap <C-i> <C-o>k
