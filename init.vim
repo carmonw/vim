@@ -12,7 +12,6 @@ set tabstop=2
 "set foldlevel=0
 "set foldopen-=block
 
-
 "set relativenumber
 "set softtabstop=2
 
@@ -34,18 +33,6 @@ Plug 'unblevable/quick-scope'
 "Plug 'easymotion/vim-easymotion'
 "Plug 'justinmk/vim-sneak'
 call plug#end()
-
- 
-"let g:netrw_banner = 0
-"let g:netrw_liststyle = 3
-"let g:netrw_browse_split = 4
-"let g:netrw_altv = 1
-"let g:netrw_winsize = 20
-"augroup ProjectDrawer
-"  autocmd!
-"  autocmd VimEnter * :Vexplore
-"augroup END
-
 
 
 let mapleader = "\<Space>"
@@ -136,7 +123,6 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 "nmap s <Plug>(easymotion-s2)
 "nmap t <Plug>(easymotion-t2)
 
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 colorscheme onedark
 "let g:onedark_terminal_italics=1
