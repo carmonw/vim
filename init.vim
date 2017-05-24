@@ -24,6 +24,7 @@ Plug 'scrooloose/syntastic'
 Plug 'elmcast/elm-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'dir': '~/.local/share/nvim/plugged/YouCompleteMe', 'do': './install --clang-completer --tern-completer --racer-completer'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
@@ -105,8 +106,6 @@ nnoremap <C-\> :source ~/.config/nvim/init.vim<Enter>
 "Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-"In Visual Block Mode press ctr+a after selecting lines to align on cursors column
-xnoremap <C-a> mmI=<Esc>mnv`mg_:EasyAlign<Enter>=`n<C-v>`md:delm<Space>m<Enter>:delm<Space>n<Enter>
 
 "inoremap <C-i> <C-o>k
 "inoremap <C-j> <C-o>h
