@@ -2,9 +2,13 @@ filetype plugin indent on
 syntax on
 set expandtab
 set number
-set nohlsearch
+"set nohlsearch
 set shiftwidth=2
 set tabstop=2
+set cursorline
+set showmatch
+set ignorecase
+set smartcase
 
 "set foldmethod=indent
 "set foldnestmax=3
@@ -30,10 +34,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/vim-easy-align' 
 Plug 'unblevable/quick-scope'
-"Plug 'easymotion/vim-easymotion'
-"Plug 'justinmk/vim-sneak'
 call plug#end()
-
 
 let mapleader = "\<Space>"
 
@@ -112,14 +113,7 @@ xnoremap <C-a> mmI=<Esc>mnv`mg_:EasyAlign<Enter>=`n<C-v>`md:delm<Space>m<Enter>:
 "inoremap <C-k> <C-o>j
 "inoremap <C-l> <C-o>l
 
-
-"let g:sneak#s_next = 1
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-"map  / <Plug>(easymotion-sn)
-"omap / <Plug>(easymotion-tn)
-"nmap s <Plug>(easymotion-s2)
-"nmap t <Plug>(easymotion-t2)
 
 set termguicolors
 colorscheme onedark
@@ -146,13 +140,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:NERDTreeMinimalUI = 1
 let NERDTreeMapOpenSplit = 'h'
 
-
-
 let g:syntastic_elm_checkers = ["elm_make"]
 "let g:syntastic_python_pyflakes_exe = 'python3 -m pyflakes'
 let g:syntastic_python_checkers = ["pyflakes"]
-
-
 
 let g:airline#extensions#tabline#enabled = 1
 
