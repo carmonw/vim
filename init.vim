@@ -68,10 +68,14 @@ noremap <S-j> b
 noremap <S-l> w
 
 "Remap 
+"Leader k=>jump down one page
+"Leader i=>jump up one page
 "Leader j=>jump to first character on line
 "Leader l=>jump to last character on line
 noremap <Leader>j ^
 noremap <Leader>l g_
+noremap <Leader>i <PageUp>
+noremap <Leader>k <PageDown>
 
 "Vertical split window and focus it
 nnoremap <C-c> :vs<Enter><C-w><Right>
