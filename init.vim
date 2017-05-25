@@ -35,6 +35,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/vim-easy-align' 
 Plug 'unblevable/quick-scope'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 let mapleader = "\<Space>"
