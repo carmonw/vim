@@ -100,12 +100,12 @@ nnoremap <C-t> :vs<Enter><C-w><Right>:term<Enter>
 "Switch buffers
 "nnoremap !<Tab> :buffer!<Space>
 "nnoremap <Tab> :buffer<Space>
-inoremap <expr> <Tab> pumvisible() ? "<C-n>" : "<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "<C-p>" : "<S-Tab>"
+"inoremap <expr> <Tab> pumvisible() ? '<C-n>' : '<Tab>'
+"inoremap <expr> <S-Tab> pumvisible() ? '<C-p>' : '<S-Tab>'
 
 "Save file
-"nnoremap <C-s> :w<Enter>
-"inoremap <C-s> <Esc>:w<Enter>
+nnoremap <C-s> :w<Enter>
+inoremap <C-s> <Esc>:w<Enter>
 
 "nnoremap <C-a> :call LanguageClient_textDocument_formatting()<Enter>
 "inoremap <C-a> <Esc>:call LanguageClient_textDocument_formatting()<Enter>
@@ -148,9 +148,9 @@ let g:polyglot_disabled = ['elm']
 let g:elm_detailed_complete = 1
 let g:elm_format_autosave = 1
 
-"let g:ycm_semantic_triggers = {
-     "\ 'elm' : ['.'],
-     "\}
+let g:ycm_semantic_triggers = {
+     \ 'elm' : ['.'],
+     \}
 
 "autocmd vimenter * NERDTreeFind
 "autocmd bufenter * if &modifiable | NERDTreeFind | wincmd p | endif
