@@ -20,6 +20,9 @@ set smartcase
 "set softtabstop=2
 
 call plug#begin('~/.local/share/nvim/plugged')
+"Plug 'roxma/nvim-completion-manager'
+"Plug 'reasonml-editor/vim-reason-plus'
+"Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'scrooloose/syntastic'
 Plug 'elmcast/elm-vim'
 Plug 'scrooloose/nerdtree'
@@ -81,8 +84,11 @@ noremap <Leader>k <PageDown>
 "Vertical split window and focus it
 nnoremap <C-c> :vs<Enter><C-w><Right>
 "Close all buffers
-nnoremap <C-n> :%bd<Enter>
-nnoremap !<C-n> :%bd!<Enter>
+"nnoremap <C-n> :%bd<Enter>
+"nnoremap !<C-n> :%bd!<Enter>
+
+nnoremap <C-n> :NERDTreeToggle<Enter>
+nnoremap <Leader><C-n> :NERDTreeFind<Enter>
 "Close buffer
 nnoremap <expr> <C-d> ( winnr("$") == 2 ? ':bp<bar>sp<bar>bn<bar>bd<Enter>' : ':bd<Enter>')
 nnoremap <expr> !<C-d> ( winnr("$") == 2 ? ':bp!<bar>sp!<bar>bn!<bar>bd!<Enter>' : ':bd!<Enter>')
@@ -92,11 +98,21 @@ nnoremap !<C-q> :q!<Enter>
 "Open terminal tab and focus it
 nnoremap <C-t> :vs<Enter><C-w><Right>:term<Enter>
 "Switch buffers
-nnoremap !<Tab> :buffer!<Space>
-nnoremap <Tab> :buffer<Space>
+"nnoremap !<Tab> :buffer!<Space>
+"nnoremap <Tab> :buffer<Space>
+inoremap <expr> <Tab> pumvisible() ? "<C-n>" : "<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "<C-p>" : "<S-Tab>"
+
 "Save file
-nnoremap <C-s> :w<Enter>
-inoremap <C-s> <Esc>:w<Enter>
+"nnoremap <C-s> :w<Enter>
+"inoremap <C-s> <Esc>:w<Enter>
+
+"nnoremap <C-a> :call LanguageClient_textDocument_formatting()<Enter>
+"inoremap <C-a> <Esc>:call LanguageClient_textDocument_formatting()<Enter>
+
+"nnoremap <expr> <C-s> ( expand('%:e') == 're' ? ':call LanguageClient_textDocument_formatting()<Enter>:sleep 500m<Enter>:w<Enter>'   : ':w<Enter>' )
+"inoremap <expr> <C-s> ( expand('%:e') == 're' ? '<Esc>:call LanguageClient_textDocument_formatting()<Enter>:sleep 500m<Enter>:w<Enter>'   : '<Esc>:w<Enter>' )
+
 "Searching project
 nnoremap <C-p> :Files<Enter>
 nnoremap <C-f> :Find<Space>
@@ -132,13 +148,13 @@ let g:polyglot_disabled = ['elm']
 let g:elm_detailed_complete = 1
 let g:elm_format_autosave = 1
 
-let g:ycm_semantic_triggers = {
-     \ 'elm' : ['.'],
-     \}
+"let g:ycm_semantic_triggers = {
+     "\ 'elm' : ['.'],
+     "\}
 
-autocmd vimenter * NERDTreeFind
-autocmd bufenter * if &modifiable | NERDTreeFind | wincmd p | endif
-autocmd vimenter * wincmd l
+"autocmd vimenter * NERDTreeFind
+"autocmd bufenter * if &modifiable | NERDTreeFind | wincmd p | endif
+"autocmd vimenter * wincmd l
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 let g:NERDTreeMinimalUI = 1
@@ -147,6 +163,10 @@ let NERDTreeMapOpenSplit = 'h'
 let g:syntastic_elm_checkers = ["elm_make"]
 "let g:syntastic_python_pyflakes_exe = 'python3 -m pyflakes'
 let g:syntastic_python_checkers = ["pyflakes"]
+
+
+"let g:syntastic_css_checkers = ["stylelint"]
+"let g:syntastic_css_stylelint_exec = 'css-standard'
 
 let g:airline#extensions#tabline#enabled = 1
 
@@ -162,3 +182,8 @@ let g:airline#extensions#tabline#enabled = 1
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
+"Reason ML
+"let g:LanguageClient_serverCommands = {
+    "\ 'reason': ['ocaml-language-server', '--stdio'],
+    "\ 'ocaml': ['ocaml-language-server', '--stdio'],
+    "\ }
