@@ -20,14 +20,19 @@ set smartcase
 "set softtabstop=2
 
 call plug#begin('~/.local/share/nvim/plugged')
-"Plug 'roxma/nvim-completion-manager'
 "Plug 'reasonml-editor/vim-reason-plus'
-"Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-cssomni'
+Plug 'ncm2/ncm2-tern'
+
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'scrooloose/syntastic'
 Plug 'elmcast/elm-vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Valloric/YouCompleteMe'
-Plug 'Valloric/YouCompleteMe', { 'dir': '~/.local/share/nvim/plugged/YouCompleteMe', 'do': './install --clang-completer --tern-completer --racer-completer'}
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe', { 'dir': '~/.local/share/nvim/plugged/YouCompleteMe', 'do': './install --clang-completer --tern-completer --racer-completer'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
@@ -100,8 +105,10 @@ nnoremap <C-t> :vs<Enter><C-w><Right>:term<Enter>
 "Switch buffers
 "nnoremap !<Tab> :buffer!<Space>
 "nnoremap <Tab> :buffer<Space>
-"inoremap <expr> <Tab> pumvisible() ? '<C-n>' : '<Tab>'
-"inoremap <expr> <S-Tab> pumvisible() ? '<C-p>' : '<S-Tab>'
+
+"use tab to cycle through autocomplete items
+inoremap <expr> <Tab> pumvisible() ? '<C-n>' : '<Tab>'
+inoremap <expr> <S-Tab> pumvisible() ? '<C-p>' : '<S-Tab>'
 
 "Save file
 nnoremap <C-s> :w<Enter>
@@ -141,16 +148,16 @@ colorscheme onedark
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:elm_syntastic_show_warnings = 1
+"let g:elm_syntastic_show_warnings = 1
 
 let g:polyglot_disabled = ['elm']
 
 let g:elm_detailed_complete = 1
 let g:elm_format_autosave = 1
 
-let g:ycm_semantic_triggers = {
-     \ 'elm' : ['.'],
-     \}
+"let g:ycm_semantic_triggers = {
+     "\ 'elm' : ['.'],
+     "\}
 
 "autocmd vimenter * NERDTreeFind
 "autocmd bufenter * if &modifiable | NERDTreeFind | wincmd p | endif
@@ -187,3 +194,11 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
     "\ 'reason': ['ocaml-language-server', '--stdio'],
     "\ 'ocaml': ['ocaml-language-server', '--stdio'],
     "\ }
+
+"ncm2
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+
+"vim gutter
+autocmd BufWritePost * GitGutter
+"set updatetime=100
