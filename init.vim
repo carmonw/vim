@@ -1,3 +1,58 @@
+"============================= Plugins ========================================"
+call plug#begin('~/.local/share/nvim/plugged')
+
+"---------- autocomplete ----------"
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-cssomni'
+Plug 'ncm2/ncm2-tern', {'do': 'npm install'}
+Plug 'ncm2/nvim-typescript', {'do': './install.sh'}
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe', { 'dir': '~/.local/share/nvim/plugged/YouCompleteMe', 'do': './install --clang-completer --tern-completer --racer-completer'}
+
+"---------- syntax checker and linter ----------"
+Plug 'scrooloose/syntastic'
+
+"---------- language pack for syntax highlighting ----------"
+Plug 'sheerun/vim-polyglot'
+
+"---------- formatting ----------"
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'junegunn/vim-easy-align'
+
+"---------- navigation and files ----------"
+Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+"---------- git ----------"
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+"---------- elm ----------"
+Plug 'elmcast/elm-vim'
+
+"---------- language server protocol (required by ncm2 and other tools that follow LSP in the future) ----------"
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+
+"---------- utility ----------"
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+Plug 'unblevable/quick-scope'
+
+"---------- terminal theme ----------"
+Plug 'joshdick/onedark.vim'
+
+"---------- miscellaneous ----------"
+Plug 'rust-lang/rust.vim'
+"Plug 'reasonml-editor/vim-reason-plus'
+
+call plug#end()
+
+
+"============================= General ========================================"
 filetype plugin indent on
 syntax on
 set expandtab
@@ -10,6 +65,7 @@ set showmatch
 set ignorecase
 set smartcase
 
+
 "set foldmethod=indent
 "set foldnestmax=3
 "set nofoldenable
@@ -18,33 +74,6 @@ set smartcase
 
 "set relativenumber
 "set softtabstop=2
-
-call plug#begin('~/.local/share/nvim/plugged')
-"Plug 'reasonml-editor/vim-reason-plus'
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-cssomni'
-Plug 'ncm2/ncm2-tern'
-
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-Plug 'scrooloose/syntastic'
-Plug 'elmcast/elm-vim'
-Plug 'scrooloose/nerdtree'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'Valloric/YouCompleteMe', { 'dir': '~/.local/share/nvim/plugged/YouCompleteMe', 'do': './install --clang-completer --tern-completer --racer-completer'}
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'sheerun/vim-polyglot'
-Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdcommenter'
-Plug 'joshdick/onedark.vim'
-Plug 'junegunn/vim-easy-align' 
-Plug 'unblevable/quick-scope'
-Plug 'tpope/vim-fugitive'
-call plug#end()
 
 let mapleader = "\<Space>"
 
@@ -140,43 +169,62 @@ nmap ga <Plug>(EasyAlign)
 "inoremap <C-k> <C-o>j
 "inoremap <C-l> <C-o>l
 
+
+"============================= quickscope ========================================"
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
+
+"============================= onedark ========================================"
 set termguicolors
 colorscheme onedark
 "let g:onedark_terminal_italics=1
 
+
+"============================= syntastic ========================================"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_elm_checkers = ["elm_make"]
+"let g:syntastic_python_pyflakes_exe = 'python3 -m pyflakes'
+let g:syntastic_python_checkers = ["pyflakes"]
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_typescript_checkers = ['eslint']
+"let g:syntastic_javascript_eslint_args = ['--fix']
+"let g:syntastic_typescript_checkers = ['tsuquyomi']
 "let g:elm_syntastic_show_warnings = 1
+"let g:syntastic_css_checkers = ["stylelint"]
+"let g:syntastic_css_stylelint_exec = 'css-standard'
+"let g:tsuquyomi_disable_quickfix = 1
 
+
+"============================= polyglot ========================================"
 let g:polyglot_disabled = ['elm']
 
+
+"============================= elm-vim ========================================"
 let g:elm_detailed_complete = 1
 let g:elm_format_autosave = 1
 
+
+"============================= YouCompleteMe ========================================"
 "let g:ycm_semantic_triggers = {
      "\ 'elm' : ['.'],
      "\}
 
+
+"============================= nerdtree ========================================"
 "autocmd vimenter * NERDTreeFind
 "autocmd bufenter * if &modifiable | NERDTreeFind | wincmd p | endif
 "autocmd vimenter * wincmd l
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 let g:NERDTreeMinimalUI = 1
 let NERDTreeMapOpenSplit = 'h'
 
-let g:syntastic_elm_checkers = ["elm_make"]
-"let g:syntastic_python_pyflakes_exe = 'python3 -m pyflakes'
-let g:syntastic_python_checkers = ["pyflakes"]
 
-
-"let g:syntastic_css_checkers = ["stylelint"]
-"let g:syntastic_css_stylelint_exec = 'css-standard'
-
+"============================= airline ========================================"
 let g:airline#extensions#tabline#enabled = 1
 
+
+"============================= fzf.vim ========================================"
 " --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
@@ -189,16 +237,29 @@ let g:airline#extensions#tabline#enabled = 1
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
+
+"============================= vim-reason-plus ========================================"
 "Reason ML
 "let g:LanguageClient_serverCommands = {
     "\ 'reason': ['ocaml-language-server', '--stdio'],
     "\ 'ocaml': ['ocaml-language-server', '--stdio'],
     "\ }
 
-"ncm2
+
+"============================= ncm2 ========================================"
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
-"vim gutter
+
+"============================= vim-gitgutter ========================================"
 autocmd BufWritePost * GitGutter
 "set updatetime=100
+
+
+"============================= rust.vim ========================================"
+let g:rustfmt_autosave = 1
+
+
+"============================= vim-prettier ========================================"
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
