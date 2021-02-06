@@ -1,6 +1,9 @@
 "============================= Plugins ========================================"
 call plug#begin('~/.local/share/nvim/plugged')
 
+"---------- elm (has to come before polyglot plugin or stuff blows up) ----------"
+Plug 'elmcast/elm-vim'
+
 "---------- autocomplete ----------"
 Plug 'ncm2/ncm2'
 Plug 'roxma/nvim-yarp'
@@ -29,9 +32,6 @@ Plug 'junegunn/fzf.vim'
 "---------- git ----------"
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-
-"---------- elm ----------"
-Plug 'elmcast/elm-vim'
 
 "---------- language server protocol (required by ncm2 and other tools that follow LSP in the future) ----------"
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
