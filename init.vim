@@ -65,7 +65,6 @@ set showmatch
 set ignorecase
 set smartcase
 
-
 "set foldmethod=indent
 "set foldnestmax=3
 "set nofoldenable
@@ -117,25 +116,31 @@ noremap <Leader>k <PageDown>
 
 "Vertical split window and focus it
 nnoremap <C-c> :vs<Enter><C-w><Right>
+
 "Close all buffers
 "nnoremap <C-n> :%bd<Enter>
 "nnoremap !<C-n> :%bd!<Enter>
 
+"NERDTree
 nnoremap <C-n> :NERDTreeToggle<Enter>
 nnoremap <Leader><C-n> :NERDTreeFind<Enter>
+
 "Close buffer
 nnoremap <expr> <C-d> ( winnr("$") == 2 ? ':bp<bar>sp<bar>bn<bar>bd<Enter>' : ':bd<Enter>')
 nnoremap <expr> !<C-d> ( winnr("$") == 2 ? ':bp!<bar>sp!<bar>bn!<bar>bd!<Enter>' : ':bd!<Enter>')
+
 "Quit file
 nnoremap <C-q> :q<Enter>
 nnoremap !<C-q> :q!<Enter>
+
 "Open terminal tab and focus it
 nnoremap <C-t> :vs<Enter><C-w><Right>:term<Enter>
+
 "Switch buffers
 "nnoremap !<Tab> :buffer!<Space>
 "nnoremap <Tab> :buffer<Space>
 
-"use tab to cycle through autocomplete items
+"Use tab to cycle through autocomplete items
 inoremap <expr> <Tab> pumvisible() ? '<C-n>' : '<Tab>'
 inoremap <expr> <S-Tab> pumvisible() ? '<C-p>' : '<S-Tab>'
 
@@ -152,14 +157,19 @@ inoremap <C-s> <Esc>:w<Enter>
 "Searching project
 nnoremap <C-p> :Files<Enter>
 nnoremap <C-f> :Find<Space>
+
 "Remove highlighting
 nnoremap <C-h> :noh<Enter>
+
 "Open all buffers
 nnoremap <C-b> :bufdo!vs<Enter>:q<Enter>:source ~/.config/nvim/init. vim<Enter>
+
 "Have all buffers do something
 nnoremap b<C-f> :bufdo!<Space>
+
 "Reload vim config
 nnoremap <C-\> :source ~/.config/nvim/init.vim<Enter>
+
 "Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
