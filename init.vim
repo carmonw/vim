@@ -115,7 +115,7 @@ noremap <Leader>i <PageUp>
 noremap <Leader>k <PageDown>
 
 "Vertical split window and focus it
-nnoremap <C-c> :vs<Enter><C-w><Right>
+"nnoremap <C-c> :vs<Enter><C-w><Right>
 
 "Close all buffers
 "nnoremap <C-n> :%bd<Enter>
@@ -134,7 +134,7 @@ nnoremap <C-q> :q<Enter>
 nnoremap !<C-q> :q!<Enter>
 
 "Open terminal tab and focus it
-nnoremap <C-t> :vs<Enter><C-w><Right>:term<Enter>
+"nnoremap <C-t> :vs<Enter><C-w><Right>:term<Enter>
 
 "Switch buffers
 "nnoremap !<Tab> :buffer!<Space>
@@ -162,10 +162,10 @@ nnoremap <C-f> :Find<Space>
 nnoremap <C-h> :noh<Enter>
 
 "Open all buffers
-nnoremap <C-b> :bufdo!vs<Enter>:q<Enter>:source ~/.config/nvim/init. vim<Enter>
+"nnoremap <C-b> :bufdo!vs<Enter>:q<Enter>:source ~/.config/nvim/init. vim<Enter>
 
 "Have all buffers do something
-nnoremap b<C-f> :bufdo!<Space>
+"nnoremap b<C-f> :bufdo!<Space>
 
 "Reload vim config
 nnoremap <C-\> :source ~/.config/nvim/init.vim<Enter>
